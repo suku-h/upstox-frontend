@@ -14,7 +14,7 @@
     "deprecation": {
       "severity": "warn"
     },
-    "eofline": true,
+    "eofline": false,
     "forin": true,
     "import-blacklist": [
       true,
@@ -138,8 +138,5 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true
-  },
-  {
-    "compiler-options"
   }
 }

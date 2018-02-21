@@ -1,6 +1,7 @@
+import * as $ from 'jquery'
 import * as io from 'socket.io-client'
 import * as Rx from 'rxjs/Rx'
-import Constants from '../../utils/constants'
+import Constants from '../../../utils/constants'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 
@@ -13,18 +14,21 @@ export class WebSocketService {
   connect(): Rx.Subject<MessageEvent> {
     this.socket = io(Constants.DATA_URL)
 
-    let observable = new Observable(observer => {
+    const observer = {
+      next: (data: Object) => {
+        this.socket.emit('message', JSON.stringify(data))
+      },
+    }
+
+    const observable = new Observable(observer => {
       this.socket.on('message', (data) => {
-        console.log('received new message', data)
         observer.next(data)
       })
-
       return () => {
         this.socket.disconnect()
       }
     })
 
-    return Rx.Subject.create(observable)
+    return Rx.Subject.create(observer, observable)
   }
-
 }
