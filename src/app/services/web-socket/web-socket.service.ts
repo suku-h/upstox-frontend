@@ -1,4 +1,3 @@
-import * as $ from 'jquery'
 import * as io from 'socket.io-client'
 import * as Rx from 'rxjs/Rx'
 import Constants from '../../../utils/constants'
