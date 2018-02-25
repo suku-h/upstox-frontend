@@ -1,6 +1,6 @@
 import * as io from 'socket.io-client'
 import * as Rx from 'rxjs/Rx'
-import Constants from '../../../utils/constants'
+import Constants from '../../../shared/utils/constants'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 
