@@ -5,10 +5,10 @@ import Data from '../../../shared/pojos/data'
 import DataState from '../../../shared/interfaces/data.state'
 import { Component, OnInit } from '@angular/core'
 import { ListenerService } from '../../services/listener/listener.service'
-import { MatTableDataSource } from '@angular/material'
+import { MatDialog, MatDialogRef, Sort } from '@angular/material'
 import { Observable } from 'rxjs/Observable'
+import { SortOptionsComponent } from '../sort-options/sort-options.component'
 import { Store } from '@ngrx/store'
-import { Subject } from 'rxjs/Subject'
 
 @Component({
   selector: 'app-data',
@@ -18,12 +18,12 @@ import { Subject } from 'rxjs/Subject'
 
 export class DataComponent implements OnInit {
   public data: Data[]
-  public dataSource = new MatTableDataSource()
   public sortStr
 
   constructor(
     private listenerService: ListenerService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private dialog: MatDialog
   ) {
     this.store.select('dataState').subscribe((dataState: DataState) => {
       this.sortStr = dataState.sortType.sortString
@@ -49,6 +49,13 @@ export class DataComponent implements OnInit {
   ngOnInit() {
     this.listenerService.data.subscribe(newData => {
       this.store.dispatch(new AddDataAction(newData))
+    })
+  }
+
+  showSortOptions() {
+    this.dialog.open(SortOptionsComponent, {
+      height: '300px',
+      width: '300px'
     })
   }
 }
