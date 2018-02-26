@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dayData of data">
+    <tr *ngFor="let dayData of data" [appLatestdata]="dayData.timestamp === latestTimestamp">
       <td>{{dayData.date}}</td>
       <td>{{dayData.open}}</td>
       <td>{{dayData.high}}</td>

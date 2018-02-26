@@ -19,6 +19,7 @@ import { Store } from '@ngrx/store'
 export class DataComponent implements OnInit {
   public data: Data[]
   public sortStr
+  public latestTimestamp = 0
 
   constructor(
     private listenerService: ListenerService,
@@ -28,18 +29,24 @@ export class DataComponent implements OnInit {
     this.store.select('dataState').subscribe((dataState: DataState) => {
       this.sortStr = dataState.sortType.sortString
 
+      let data = dataState.data
+      if (data.length > 0) {
+        let latestData = data[data.length - 1]
+        this.latestTimestamp = latestData.timestamp
+      }
+
       switch (dataState.sortType.order) {
         case 'time_up':
-          this.data = _.sortBy(dataState.data, 'timestamp').reverse()
+          this.data = _.sortBy(data, 'timestamp').reverse()
           break
         case 'time_down':
-          this.data = _.sortBy(dataState.data, 'timestamp')
+          this.data = _.sortBy(data, 'timestamp')
           break
         case 'close_up':
-          this.data = _.sortBy(dataState.data, 'close').reverse()
+          this.data = _.sortBy(data, 'close').reverse()
           break
         case 'close_down':
-          this.data = _.sortBy(dataState.data, 'close')
+          this.data = _.sortBy(data, 'close')
           break
       }
     })
@@ -53,9 +60,6 @@ export class DataComponent implements OnInit {
   }
 
   showSortOptions() {
-    this.dialog.open(SortOptionsComponent, {
-      height: '300px',
-      width: '300px'
-    })
+    this.dialog.open(SortOptionsComponent)
   }
 }

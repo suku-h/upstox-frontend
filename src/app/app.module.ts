@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
 import { DataComponent } from './components/data/data.component'
 import { GraphDataComponent } from './components/graph-data/graph-data.component'
+import { LatestdataDirective } from './directives/latestdata.directive'
 import { ListenerService } from './services/listener/listener.service'
 import { MaterialModule } from './modules/material.module'
 import { NgModule } from '@angular/core'
@@ -18,7 +19,8 @@ import { WebSocketService } from './services/web-socket/web-socket.service'
     AppComponent,
     DataComponent,
     SortOptionsComponent,
-    GraphDataComponent
+    GraphDataComponent,
+    LatestdataDirective
   ],
   imports: [
     BrowserAnimationsModule,
