@@ -1,0 +1,9 @@
+* {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.mat-raised-button {
+  color: whitesmoke;
+  background: indianred;
+}

@@ -18,7 +18,7 @@ export class GraphDataComponent implements OnInit {
   public chartData: any
   private graphData: GraphData[]
 
-  public view: any[] = [700, 400]
+  public view: any[] = [500, 400]
 
   public showXAxis = true
   public showYAxis = true
@@ -26,8 +26,9 @@ export class GraphDataComponent implements OnInit {
   public showLegend = false
   public showXAxisLabel = false
   public xAxisLabel = 'Dates'
-  public showYAxisLabel = true
+  public showYAxisLabel = false
   public yAxisLabel = 'Close'
+  public yScaleMax = 1400
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']

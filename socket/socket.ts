@@ -48,10 +48,10 @@ class SocketServer {
   }
 
   /**
-   * Get random values between 900 & 1100
+   * Get random values between 700 & 1200
   */
   private getOpenClose(): number {
-    return 900 + Math.floor(Math.random() * 200)
+    return 700 + Math.floor(Math.random() * 500)
   }
 
   /**
@@ -67,8 +67,8 @@ class SocketServer {
    * @param close
    */
   private getLow(open: number, close: number): number {
-    const maxRange = Math.min(open, close) - 900
-    return 900 + Math.floor(Math.random() * maxRange)
+    const maxRange = Math.min(open, close) - 700
+    return 700 + Math.floor(Math.random() * maxRange)
   }
 
   /**
@@ -77,7 +77,7 @@ class SocketServer {
    * @param close
    */
   private getHigh(open: number, close: number): number {
-    const maxRange = 1100 - Math.max(open, close)
+    const maxRange = 1200 - Math.max(open, close)
     return Math.max(open, close) + Math.floor(Math.random() * maxRange)
   }
 
