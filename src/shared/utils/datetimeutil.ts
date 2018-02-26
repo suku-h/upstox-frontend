@@ -1,6 +1,7 @@
 import * as moment from 'moment-timezone'
 
 export const FORMAT_DDMMMYYYY = 'DD MMM YYYY'
+export const FORMAT_DDMMYY = 'DD/MM/YY'
 
 const timezone = 'Asia/Calcutta'
 
